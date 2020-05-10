@@ -1,6 +1,6 @@
-CREATE TABLE book (
+CREATE TABLE books (
     id serial PRIMARY KEY,
-    isbn CHAR (14),
+    isbn VARCHAR (16) UNIQUE,
     title VARCHAR(50),
     author VARCHAR(50),
     year INTEGER
