@@ -18,3 +18,11 @@ class RegistrationForm(FlaskForm):
                               validators=[
                                   DataRequired(), EqualTo('password')
                               ])
+
+    def validate_username(self, username):
+        data = {'username': self.username.data}
+
+        count = db.session.execute(
+            "SELECT COUNT(*) FROM users WHERE username=:username", data).fetchone()[0]
+        if count > 0:
+            raise ValidationError("Please use a different username.")

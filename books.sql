@@ -5,3 +5,9 @@ CREATE TABLE books (
     author VARCHAR(50),
     year INTEGER
 );
+
+CREATE TABLE users (
+    id serial PRIMARY KEY,
+    username VARCHAR(25) UNIQUE,
+    password VARCHAR(255)
+);
