@@ -1,19 +1,19 @@
 import os
 
-from flask import Flask, session, jsonify
+from dotenv import load_dotenv
+from flask import Flask
 from flask_session import Session
-from sqlalchemy import create_engine
-from sqlalchemy.orm import scoped_session, sessionmaker
+from flask_sqlalchemy import SQLAlchemy
+
+
+load_dotenv()
+
+session = Session()
+db = SQLAlchemy()
 
 # Check for environment variable
 if not os.getenv("DATABASE_URL"):
     raise RuntimeError("DATABASE_URL is not set")
-
-session = Session()
-
-# Set up database
-engine = create_engine(os.getenv("DATABASE_URL"))
-db = scoped_session(sessionmaker(bind=engine))
 
 
 def create_app(script_info=None):
@@ -26,6 +26,7 @@ def create_app(script_info=None):
 
     # set up extensions
     session.init_app(app)
+    db.init_app(app)
 
     # set up blueprints
     from project.books.routes import books_blueprint

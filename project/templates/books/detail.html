@@ -5,7 +5,7 @@
 {% block content %}
     {% for book in books %}
         <p>
-<a href="http://covers.openlibrary.org/b/isbn/{{ book.isbn }}-S.jpg" alt=""></a>        <a href="{{ url_for('books.detail', isbn=book.isbn) }}"><img src
+        <img src="http://covers.openlibrary.org/b/isbn/{{ book.isbn }}-L.jpg" alt="">
         {{ book.title }}: {{ book.author }}</p>
     {% endfor %}
 {% endblock  %}

@@ -1,11 +1,16 @@
 import os
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 class BaseConfig:
     TESTING = False
     SESSION_PERMANENT = False
     SESSION_TYPE = "filesystem"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    SECRET_KEY = os.environ.get('SECRET_KEY')
 
 
 class DevelopmentConfig(BaseConfig):
