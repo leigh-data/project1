@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, redirect, flash, url_for
+from flask import Blueprint, render_template, redirect, flash, url_for, session
 
 from project.auth.forms import RegistrationForm, LoginForm
 from project import db, bcrypt
+from utils.decorators import login_required
 
 auth_blueprint = Blueprint('auth', __name__)
 
@@ -31,6 +32,15 @@ def login():
 
     if form.validate_on_submit():
         session['username'] = form.username.data
-        return str(session['username'])
+        flash("You are now logged in.")
+        return redirect(url_for('books.index'))
     else:
-        return render_template("auth/login.html", form=form)
+        return render_template('auth/login.html', form=form)
+
+
+@auth_blueprint.route("/logout", methods=["POST"])
+@login_required
+def logout():
+    session.pop('username')
+    flash("You have been logged out.")
+    return redirect(url_for('books.index'))

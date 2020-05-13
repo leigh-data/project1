@@ -7,6 +7,12 @@
 </head>
 <body>
     {% include 'macros/_flash_messages.html' %}
+    {% if session['username'] %}
+        <h3>{{ session['username']}}</h3>
+        <form action="{{ url_for('auth.logout')}}" method="post">
+            <button>Log Out</button>
+        </form>
+    {% endif %}
     {% block content %}{% endblock  %}
 </body>
 </html>

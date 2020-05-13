@@ -43,7 +43,7 @@ class LoginForm(FlaskForm):
             self.password.errors.append('Incorrect email or password')
 
     def validate(self):
-        rv = FlaskForm.validate_on_submit(self)
+        rv = FlaskForm.validate(self)
         if not rv:
             return False
 
@@ -53,5 +53,4 @@ class LoginForm(FlaskForm):
         if password_hash and bcrypt.check_password_hash(password_hash, self.password.data):
             return True
         else:
-            print("HAHAHAHAHHA!!!!!!")
             self.password.errors.append("Incorrect username or password")
