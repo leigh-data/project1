@@ -49,8 +49,8 @@ class LoginForm(FlaskForm):
 
         data = {'username': self.username.data}
         password_hash = db.session.execute(
-            "SELECT password FROM users WHERE username=:username", data).fetchone()[0]
-        if password_hash and bcrypt.check_password_hash(password_hash, self.password.data):
+            "SELECT password FROM users WHERE username=:username", data).fetchone()
+        if password_hash and bcrypt.check_password_hash(password_hash[0], self.password.data):
             return True
         else:
             self.password.errors.append("Incorrect username or password")
