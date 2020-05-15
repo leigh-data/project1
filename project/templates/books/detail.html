@@ -1,11 +1,23 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ message }}{% endblock  %}
+{% block title %}{{ book.title }}{% endblock  %}
 
 {% block content %}
-    {% for book in books %}
-        <p>
-        <img src="http://covers.openlibrary.org/b/isbn/{{ book.isbn }}-L.jpg" alt="">
-        {{ book.title }}: {{ book.author }}</p>
-    {% endfor %}
+    <p>
+    <img src="http://covers.openlibrary.org/b/isbn/{{ book.isbn }}-L.jpg" alt="">
+    {{ book.title }}: {{ book.author }}</p>
+    {% if has_rating %}
+        <a href="{{ url_for('ratings.update_rating', isbn=book.isbn) }}">Update a Rating</a>
+    {% else %}
+        <a href="{{ url_for('ratings.create_rating', isbn=book.isbn) }}">Leave a Rating</a>
+    {% endif %}
+    {% if ratings %}
+        <ul>
+            {% for rating in ratings %}
+                <li>{{ rating.username }}- <em>{{ rating.rating }}</em>-{{ rating.comment }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no ratings.</p>
+    {% endif %}
 {% endblock  %}

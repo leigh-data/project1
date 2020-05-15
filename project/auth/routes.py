@@ -31,7 +31,13 @@ def login():
     form = LoginForm()
 
     if form.validate_on_submit():
-        session['username'] = form.username.data
+        # GET USER ID
+        data = {'username': form.username.data}
+
+        user = db.session.execute(
+            "SELECT id, username FROM users WHERE username=:username", data).fetchone()
+        session['username'] = user['username']
+        session['user_id'] = user['id']
         flash("You are now logged in.")
         return redirect(url_for('books.index'))
     else:
