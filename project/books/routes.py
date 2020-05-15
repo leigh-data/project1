@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, session, abort
 from project import db
+from project.ratings.forms import DeleteRatingForm
 
 books_blueprint = Blueprint('books', __name__)
 
@@ -29,6 +30,12 @@ def detail(isbn):
         has_rating = db.session.execute(
             "SELECT COUNT(*) FROM ratings WHERE book_id=:book_id AND user_id=:user_id",
             {'book_id': book['id'], 'user_id': session['user_id']}).fetchone()[0] > 0
-        return render_template('books/detail.html', book=book, has_rating=has_rating, ratings=ratings)
+
+        if has_rating:
+            form = DeleteRatingForm()
+        else:
+            form = None
+
+        return render_template('books/detail.html', book=book, has_rating=has_rating, ratings=ratings, form=form)
     else:
         abort(404)

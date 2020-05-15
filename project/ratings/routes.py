@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, redirect, flash, url_for, session, abort
 from utils.decorators import login_required
 
-from project.ratings.forms import RatingForm
+from project.ratings.forms import RatingForm, DeleteRatingForm
 from project import db
 
 
@@ -82,7 +82,27 @@ def update_rating(isbn):
     #     return redirect(url_for('books.index'))
 
 
-@ratings_blueprint.route("/<string:isbn>/ratings/delete", methods=['GET', 'POST'])
+@ratings_blueprint.route("/<string:isbn>/ratings/delete", methods=['POST'])
 @login_required
 def delete_rating(isbn):
-    return f"DELETE RATING:{isbn}"
+    user_id = session['user_id']
+    book_id = db.session.execute(
+        "SELECT id FROM books WHERE isbn=:isbn", {'isbn': isbn}).fetchone()[0]
+    data = {
+        'user_id': user_id,
+        'book_id': book_id
+    }
+
+    form = DeleteRatingForm()
+
+    if form.validate_on_submit():
+        db.session.execute("DELETE FROM ratings WHERE user_id=:user_id AND book_id=:book_id",
+                           data)
+        db.session.commit()
+
+        flash("The rating has been deleted.")
+
+    else:
+        flash("The rating could not be deleted.")
+
+    return redirect(url_for('books.detail', isbn=isbn))

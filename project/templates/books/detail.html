@@ -6,10 +6,16 @@
     <p>
     <img src="http://covers.openlibrary.org/b/isbn/{{ book.isbn }}-L.jpg" alt="">
     {{ book.title }}: {{ book.author }}</p>
-    {% if has_rating %}
-        <a href="{{ url_for('ratings.update_rating', isbn=book.isbn) }}">Update a Rating</a>
-    {% else %}
-        <a href="{{ url_for('ratings.create_rating', isbn=book.isbn) }}">Leave a Rating</a>
+    {% if session['username'] %}
+        {% if has_rating %}
+            <a href="{{ url_for('ratings.update_rating', isbn=book.isbn) }}">Update a Rating</a>
+            <form action="{{ url_for('ratings.delete_rating', isbn=book.isbn)}}" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <button>Delete Rating</button>
+        </form>
+        {% else %}
+            <a href="{{ url_for('ratings.create_rating', isbn=book.isbn) }}">Leave a Rating</a>
+        {% endif %}
     {% endif %}
     {% if ratings %}
         <ul>
