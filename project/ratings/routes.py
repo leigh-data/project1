@@ -49,37 +49,39 @@ def create_rating(isbn):
 @ratings_blueprint.route("/<string:isbn>/ratings/update", methods=['GET', 'POST'])
 @login_required
 def update_rating(isbn):
-    # try:
-    book_id = db.session.execute(
-        "SELECT id FROM books WHERE isbn=:isbn", {'isbn': isbn}).fetchone()[0]
-    user_id = session['user_id']
-    data = {'book_id': book_id, 'user_id': user_id}
+    try:
+        book_id = db.session.execute(
+            "SELECT id FROM books WHERE isbn=:isbn", {'isbn': isbn}).fetchone()[0]
+        user_id = session['user_id']
+        data = {'book_id': book_id, 'user_id': user_id}
 
-    rating = db.session.execute(
-        "SELECT comment, rating FROM ratings WHERE book_id=:book_id AND user_id=:user_id",
-        data).fetchone()
+        rating = db.session.execute(
+            "SELECT comment, rating FROM ratings WHERE book_id=:book_id AND user_id=:user_id",
+            data).fetchone()
 
-    form = RatingForm(obj=rating)
+        if book_id is None:
+            abort(404)
 
-    if form.validate_on_submit():
-        rating = form.rating.data
-        comment = form.comment.data
+        form = RatingForm(obj=rating)
 
-        data['rating'] = rating
-        data['comment'] = comment
+        if form.validate_on_submit():
+            rating = form.rating.data
+            comment = form.comment.data
 
-        db.session.execute(
-            "UPDATE ratings SET comment=:comment, rating=:rating WHERE book_id=:book_id AND user_id=:user_id",
-            data)
-        db.session.commit()
+            data['rating'] = rating
+            data['comment'] = comment
 
-        flash("Your rating has been updated")
-        return redirect(url_for('books.detail', isbn=isbn))
+            db.session.execute(
+                "UPDATE ratings SET comment=:comment, rating=:rating WHERE book_id=:book_id AND user_id=:user_id",
+                data)
+            db.session.commit()
 
-    return render_template('ratings/update.html', form=form, isbn=isbn)
-    # except TypeError:
-    #     flash('The book does not exist.')
-    #     return redirect(url_for('books.index'))
+            flash("Your rating has been updated")
+            return redirect(url_for('books.detail', isbn=isbn))
+
+        return render_template('ratings/update.html', form=form, isbn=isbn)
+    except:
+        abort(404)
 
 
 @ratings_blueprint.route("/<string:isbn>/ratings/delete", methods=['POST'])
