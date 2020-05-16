@@ -3,7 +3,10 @@
 {% block title %}{{ message }}{% endblock  %}
 
 {% block content %}
-    {% for book in books %}
-        <p><i class="fa fa-book"></i><a href="{{ url_for('books.detail', isbn=book.isbn) }}">{{ book.title }}: {{ book.author }}</a> </p>
-    {% endfor %}
+    <div class="jumbotron jumbotron-fluid hero"></div>
+    <div class="container">
+        {% for book in books %}
+            <p><i class="fa fa-book"></i><a href="{{ url_for('books.detail', isbn=book.isbn) }}">{{ book.title }}: {{ book.author }}</a> </p>
+        {% endfor %}
+    </div>
 {% endblock  %}
