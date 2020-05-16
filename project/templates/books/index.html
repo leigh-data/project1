@@ -4,6 +4,6 @@
 
 {% block content %}
     {% for book in books %}
-        <p><a href="{{ url_for('books.detail', isbn=book.isbn) }}">{{ book.title }}: {{ book.author }}</a> </p>
+        <p><i class="fa fa-book"></i><a href="{{ url_for('books.detail', isbn=book.isbn) }}">{{ book.title }}: {{ book.author }}</a> </p>
     {% endfor %}
 {% endblock  %}
