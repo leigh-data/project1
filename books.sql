@@ -3,7 +3,8 @@ CREATE TABLE books (
     isbn VARCHAR (16) UNIQUE,
     title VARCHAR(50),
     author VARCHAR(50),
-    year INTEGER
+    year INTEGER,
+    tsv tsvector
 );
 
 CREATE TABLE users (
@@ -20,3 +21,23 @@ CREATE TABLE ratings (
     comment TEXT,
     UNIQUE(book_id, user_id)
 );
+
+CREATE OR REPLACE FUNCTION search_params_trigger() RETURNS trigger as $$
+    begin
+        new.tsv := to_tsvector(
+            'pg_catalog.english',
+            substring(
+                new.isbn || ' ' ||
+                new.title ||' ' ||
+                new.author,
+                1, 500000
+                )
+            );
+        return new;
+    end
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER tsvectorupdate BEFORE INSERT OR UPDATE
+ON books FOR EACH ROW EXECUTE PROCEDURE search_params_trigger();
+
+CREATE INDEX ix_books_tsv ON books USING GIN(tsv);
