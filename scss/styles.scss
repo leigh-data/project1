@@ -1,4 +1,8 @@
 $fa-font-path: "../fonts";
+$navbar-font: "Julius Sans One", sans-serif;
+$main-font: "Lato", sans-serif;
+
+@import url("https://fonts.googleapis.com/css2?family=Julius+Sans+One&family=Lato&display=swap");
 
 @import "node_modules/bootstrap/scss/bootstrap";
 @import "font-awesome/fontawesome.scss";

@@ -1,10 +1,90 @@
 body {
   background-color: honeydew;
+  font-family: $main-font;
 }
 
 .hero {
   width: 100vw;
-  height: 80vh;
+  height: 100vh;
   background-image: url("../img/hero.jpg");
   background-size: cover;
+
+  .hero-text {
+    text-align: center;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+
+    & > a {
+      font-size: 1.5rem;
+      color: #343a40;
+      font-family: $navbar-font;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.navbar {
+  font-family: $navbar-font;
+  form {
+    display: inline;
+  }
+}
+
+.fa.fa-book {
+  color: cornflowerblue;
+}
+
+.messages {
+  min-height: 58px;
+}
+
+%base_card {
+  @extend .card;
+
+  .card-header {
+    font-family: $navbar-font;
+    text-align: center;
+  }
+
+  > ul {
+    @extend .list-group;
+    @extend .list-group-flush;
+
+    li {
+      @extend .list-group-item;
+    }
+  }
+}
+
+.book-card {
+  @extend %base_card;
+
+  .rating-buttons {
+    form {
+      display: inline-block;
+    }
+  }
+}
+
+.goodreads-card {
+  @extend %base_card;
+}
+
+.rating-card {
+  @extend %base_card;
+  width: 60rem;
+}
+
+.rating-comment {
+  min-height: 300px;
+  resize: none;
+}
+
+@media only screen and (max-width: 991px) {
+  form.form-inline {
+    button.btn.btn-dark {
+      padding-left: 0;
+    }
+  }
 }

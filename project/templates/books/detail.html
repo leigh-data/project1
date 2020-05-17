@@ -3,27 +3,45 @@
 {% block title %}{{ book.title }}{% endblock  %}
 
 {% block content %}
-    <p>
-    <img src="http://covers.openlibrary.org/b/isbn/{{ book.isbn }}-L.jpg" alt="">
-    {{ book.title }}: {{ book.author }}</p>
-    {% if session['username'] %}
-        {% if has_rating %}
-            <a href="{{ url_for('ratings.update_rating', isbn=book.isbn) }}">Update a Rating</a>
-            <form action="{{ url_for('ratings.delete_rating', isbn=book.isbn)}}" method="post" novalidate>
-            {{ form.hidden_tag() }}
-            <button>Delete Rating</button>
-        </form>
-        {% else %}
-            <a href="{{ url_for('ratings.create_rating', isbn=book.isbn) }}">Leave a Rating</a>
-        {% endif %}
-    {% endif %}
-    {% if ratings %}
-        <ul>
-            {% for rating in ratings %}
-                <li>{{ rating.username }}- <em>{{ rating.rating }}</em>-{{ rating.comment }}</li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>There are no ratings.</p>
-    {% endif %}
-{% endblock  %}
+    {% include 'macros/_flash_messages.html' %}
+    <div class="container mb-3">
+        <div class="row mb-3">
+            <div class="card-deck ml-3 mr-3">
+                <div class="book-card">
+                    <div class="card-header">
+                        {{ book.title }}
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Author: {{ book.author }}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="goodreads-card">
+                    <div class="card-header">
+                        Goodreads
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="rating-card">
+                <div class="card-header">
+                        Ratings
+                </div>
+                {% if ratings %}
+                    <ul>
+                    {% for rating in ratings %}
+                        <li>{{ rating.username }} <span class="badge badge-primary mr-2 ml-2">{{ rating.rating }}</span> {{ rating.comment }}</li>
+                    {% endfor %}
+                    </ul>
+                {% else %}{% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
