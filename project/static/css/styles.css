@@ -11726,15 +11726,16 @@ body {
 .messages {
   min-height: 58px; }
 
-.book-card .card-header, .goodreads-card .card-header, .rating-card .card-header {
-  font-family: "Julius Sans One", sans-serif;
-  text-align: center; }
+.book-card, .goodreads-card, .rating-card {
+  width: 100%; }
+  .book-card .card-header, .goodreads-card .card-header, .rating-card .card-header {
+    font-family: "Julius Sans One", sans-serif;
+    text-align: center; }
 
-.book-card .rating-buttons form {
-  display: inline-block; }
-
-.rating-card {
-  width: 60rem; }
+.book-card {
+  width: 30rem; }
+  .book-card .rating-buttons form {
+    display: inline-block; }
 
 .rating-comment {
   min-height: 300px;

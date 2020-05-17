@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ message }}{% endblock  %}
+
+{% block content %}
+    {% include 'macros/_flash_messages.html' %}
+    <div class="container mb-3">
+        <li class="list-group">
+            {% for book in books %}
+                <li class="list-group-item"><i class="fa fa-book mr-3"></i><a href="{{ url_for('books.detail', isbn=book.isbn) }}">{{ book.title }}: {{ book.author }}</a> </li>
+            {% endfor %}
+        </li>
+        {% if has_previous %}<a href="{{url_for('books.search')}}?q={{query}}&page={{page - 1}}">Previous</a>{% endif %}
+        {% if has_next %}<a href="{{url_for('books.search')}}?q={{query}}&page={{page + 1}}">Next</a>{% endif %}
+    </div>
+{% endblock  %}

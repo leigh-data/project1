@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template, session, abort
+from flask import Blueprint, render_template, session, abort, request
 from project import db
+from utils.decorators import login_required
 from project.ratings.forms import DeleteRatingForm
 
 books_blueprint = Blueprint('books', __name__)
@@ -10,6 +11,43 @@ def index():
     books = db.session.execute(
         "SELECT id, isbn, title, author, year FROM books").fetchall()
     return render_template('books/index.html', books=books)
+
+
+@books_blueprint.route("/search", methods=['GET'])
+@login_required
+def search():
+    query = request.args.get('q')
+
+    page = request.args.get('page')
+    page = int(page)
+
+    page_count = db.session.execute("""
+    SELECT CEILING(CAST(COUNT(*) AS DECIMAL)/5) FROM books WHERE tsv @@ plainto_tsquery(:query);
+    """, {'query': query}).fetchone()[0]
+
+    if page_count == 0:
+        return abort(404)
+
+    if page > page_count:
+        page = page_count
+
+    has_next = page < page_count
+    has_previous = page > 1
+
+    books = db.session.execute("""
+    SELECT id, author, title, isbn                                                                                                                                  
+    FROM books                                                                                                                                                                 
+    WHERE tsv @@ plainto_tsquery(:query)                                                                                                                                   
+    ORDER BY id ASC                                                                                                                                                            
+    LIMIT :page_size offset ((:page - 1) * :page_size)
+    """, {'query': query, 'page': page, 'page_size': 5}).fetchall()
+
+    return render_template('books/search.html',
+                           books=books,
+                           page=page,
+                           query=query,
+                           has_next=has_next,
+                           has_previous=has_previous)
 
 
 @books_blueprint.route("/<isbn>")

@@ -8,16 +8,8 @@
             {% if session['username'] %}
                 <a href="#search" class="btn btn-warning">Search The Reviews</a>
             {% else %}
-                <a href="#" class="btn btn-warning">Log In to Participate</a>
+                <a href="{{ url_for("auth.login")}}" class="btn btn-warning">Log In to Participate</a>
             {% endif %}
         </div>
-    </div>
-    {% include 'macros/_flash_messages.html' %}
-    <div class="container mb-3">
-        <li class="list-group">
-            {% for book in books %}
-                <li class="list-group-item"><i class="fa fa-book mr-3"></i><a href="{{ url_for('books.detail', isbn=book.isbn) }}">{{ book.title }}: {{ book.author }}</a> </li>
-            {% endfor %}
-        </li>
     </div>
 {% endblock  %}

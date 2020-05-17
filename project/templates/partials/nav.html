@@ -18,14 +18,15 @@
           </form>
         </div>
       {% else %}
-        <div class="nav-item"><a class="btn btn-dark" href="{{ url_for('auth.login')}}">Log In</a></div>
-        <div class="nav-item"><a class="btn btn-dark" href="{{ url_for('auth.register')}}">Register</a></div>
+        <div class="nav-item"><a class="nav-link text-white bg-dark mr-2" href="{{ url_for('auth.login')}}">Log In</a></div>
+        <div class="nav-item"><a class="nav-link text-white bg-dark" href="{{ url_for('auth.register')}}">Register</a></div>
       {% endif %}
     </div>
     <div class="nav-nav ml-auto">
       <div class="nav-item">
-        <form class="form-inline">
-          <input class="form-control mb-1" type="search" placeholder="Search" aria-label="Search" id="search">
+        <form class="form-inline" action="{{ url_for("books.search")}}" method="GET">
+          <input class="form-control mb-1" name="q" type="search" placeholder="Search" aria-label="Search" id="search">
+          <input type="hidden" name="page" value="1">
           <button class="btn btn-secondary mb-1" type="submit">Search</button>
         </form>
       </div>

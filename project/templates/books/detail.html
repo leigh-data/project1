@@ -6,25 +6,40 @@
     {% include 'macros/_flash_messages.html' %}
     <div class="container mb-3">
         <div class="row mb-3">
-            <div class="card-deck ml-3 mr-3">
+            <div class="col-md-8">
                 <div class="book-card">
                     <div class="card-header">
                         {{ book.title }}
                     </div>
-                    <div class="card-body">
-                        <ul>
-                            <li>Author: {{ book.author }}</li>
-                        </ul>
+                    <ul>
+                        <li class="text-center">Author: {{ book.author }}</li>
+                        <li class="text-center">ISBN: {{ book.isbn }}</li>
+                        <li class="text-center">Year: {{ book.year }}</li>
+                    </ul>
+                    {% if  has_rating %}
+                    <div class="card-body rating-buttons">
+                        <a href="{{ url_for('ratings.update_rating', isbn=book.isbn)}}" class="card-link btn btn-primary mr-2">Update Review</a>
+                        <form action="{{ url_for('ratings.delete_rating', isbn=book.isbn)}}" method="post" class="float-right">
+                            {{ form.hidden_tag() }}
+                            <button class="btn btn-danger">Delete Review</button>
+                        </form>
                     </div>
+                    {% else %}
+                    <div class="card-body rating-buttons text-center">
+                        <a href="{{ url_for('ratings.create_rating', isbn=book.isbn)}}" class="btn btn-primary ">Write Review</a>
+                    </div>
+                    {% endif %}
                 </div>
+            </div>
+            <div class="col-md-4">
                 <div class="goodreads-card">
                     <div class="card-header">
                         Goodreads
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        <p class="card-text"></p>
+                        <p class="card-text"></p>
                     </div>
                 </div>
             </div>

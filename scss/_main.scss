@@ -41,13 +41,14 @@ body {
 
 %base_card {
   @extend .card;
+  width: 100%;
 
   .card-header {
     font-family: $navbar-font;
     text-align: center;
   }
 
-  > ul {
+  & > ul {
     @extend .list-group;
     @extend .list-group-flush;
 
@@ -59,6 +60,7 @@ body {
 
 .book-card {
   @extend %base_card;
+  width: 30rem;
 
   .rating-buttons {
     form {
@@ -73,7 +75,6 @@ body {
 
 .rating-card {
   @extend %base_card;
-  width: 60rem;
 }
 
 .rating-comment {
