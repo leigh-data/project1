@@ -1,4 +1,5 @@
-from flask import Blueprint, render_template, session, abort, request, redirect, url_for, flash
+import requests
+from flask import Blueprint, render_template, session, abort, request, redirect, url_for, flash, current_app
 from project import db
 from utils.decorators import login_required
 from project.ratings.forms import DeleteRatingForm
@@ -55,6 +56,18 @@ def search():
 
 @books_blueprint.route("/<isbn>")
 def detail(isbn):
+    try:
+        goodreads_key = current_app.config['GOODREADS_KEY']
+        goodreads_response = requests.get(
+            'https://www.goodreads.com/book/review_counts.json',
+            params={'key': goodreads_key,
+                    'isbns': isbn})
+
+        goodreads_data = dict(goodreads_response.json())['books'][0]
+
+    except:
+        abort(404)
+
     book = db.session.execute(
         "SELECT id, isbn, title, author, year FROM books WHERE isbn=:isbn", {'isbn': isbn}).fetchone()
 
@@ -77,6 +90,6 @@ def detail(isbn):
         else:
             form = None
 
-        return render_template('books/detail.html', book=book, has_rating=has_rating, ratings=ratings, form=form)
+        return render_template('books/detail.html', book=book, has_rating=has_rating, ratings=ratings, form=form, goodreads_data=goodreads_data)
     else:
         abort(404)

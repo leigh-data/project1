@@ -39,44 +39,9 @@ body {
   min-height: 58px;
 }
 
-%base_card {
-  @extend .card;
-  width: 100%;
+/* CARD STYLES */
 
-  .card-header {
-    font-family: $navbar-font;
-    text-align: center;
-  }
-
-  & > ul {
-    @extend .list-group;
-    @extend .list-group-flush;
-
-    li {
-      @extend .list-group-item;
-    }
-  }
-}
-
-.book-card {
-  @extend %base_card;
-  width: 30rem;
-
-  .rating-buttons {
-    form {
-      display: inline-block;
-    }
-  }
-}
-
-.goodreads-card {
-  @extend %base_card;
-}
-
-.rating-card {
-  @extend %base_card;
-}
-
+/* RATING FORM STYLES */
 .rating-comment {
   min-height: 300px;
   resize: none;

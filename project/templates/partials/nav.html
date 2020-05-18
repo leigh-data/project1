@@ -7,7 +7,7 @@
     <ul class="navbar-nav mr-auto">
       {% if session['username'] %}
       <li class="nav-item">
-        <a class="nav-link">
+        <a class="nav-link" href="#">
           <i class="fas fa-user ar-1"></i>{{ session['username']}}
         </a>
       </li>
@@ -21,10 +21,12 @@
       <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.register')}}">Register</a></li>
       {% endif %}
     </ul>
+    {% if session['username'] %}
     <form class="form-inline my-2 my-lg-0" action="{{ url_for("books.search")}}" method="GET">
       <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
       <input type="hidden" name="page" value="1">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+    {% endif %}
   </div>
 </nav>

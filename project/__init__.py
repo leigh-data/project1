@@ -44,10 +44,12 @@ def create_app(script_info=None):
     from project.books.routes import books_blueprint
     from project.auth.routes import auth_blueprint
     from project.ratings.routes import ratings_blueprint
+    from project.api.routes import api_blueprint
 
     app.register_blueprint(books_blueprint)
     app.register_blueprint(auth_blueprint)
     app.register_blueprint(ratings_blueprint)
+    app.register_blueprint(api_blueprint)
 
     @app.shell_context_processor
     def ctx():

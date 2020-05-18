@@ -4,58 +4,37 @@
 
 {% block content %}
     {% include 'macros/_flash_messages.html' %}
-    <div class="container mb-3">
-        <div class="row mb-3">
-            <div class="col-md-8">
-                <div class="book-card">
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-7">
+                <div class="card text-center">
                     <div class="card-header">
                         {{ book.title }}
                     </div>
-                    <ul>
-                        <li class="text-center">Author: {{ book.author }}</li>
-                        <li class="text-center">ISBN: {{ book.isbn }}</li>
-                        <li class="text-center">Year: {{ book.year }}</li>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Author: {{ book.author }}</li>
+                        <li class="list-group-item">Year: {{ book.year }}</li>
+                        <li class="list-group-item">ISBN: {{ book.isbn }}</li>
                     </ul>
-                    {% if  has_rating %}
-                    <div class="card-body rating-buttons">
-                        <a href="{{ url_for('ratings.update_rating', isbn=book.isbn)}}" class="card-link btn btn-primary mr-2">Update Review</a>
-                        <form action="{{ url_for('ratings.delete_rating', isbn=book.isbn)}}" method="post" class="float-right">
-                            {{ form.hidden_tag() }}
-                            <button class="btn btn-danger">Delete Review</button>
-                        </form>
-                    </div>
-                    {% else %}
-                    <div class="card-body rating-buttons text-center">
-                        <a href="{{ url_for('ratings.create_rating', isbn=book.isbn)}}" class="btn btn-primary ">Write Review</a>
-                    </div>
-                    {% endif %}
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="goodreads-card">
+            <div class="col-md-5">
+                <div class="card text-center">
                     <div class="card-header">
                         Goodreads
                     </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text"></p>
-                        <p class="card-text"></p>
-                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Average Rating: {{ goodreads_data['average_rating'] }}</li>
+                        <li class="list-group-item">Total Ratings: {{ goodreads_data['work_ratings_count'] }}</li>
+                    </ul>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="rating-card">
-                <div class="card-header">
-                        Ratings
+            <div class="col">
+                <div class="card">
+                    Ratings
                 </div>
-                {% if ratings %}
-                    <ul>
-                    {% for rating in ratings %}
-                        <li>{{ rating.username }} <span class="badge badge-primary mr-2 ml-2">{{ rating.rating }}</span> {{ rating.comment }}</li>
-                    {% endfor %}
-                    </ul>
-                {% else %}{% endif %}
             </div>
         </div>
     </div>

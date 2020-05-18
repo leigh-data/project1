@@ -11,7 +11,7 @@ class BaseConfig:
     SESSION_TYPE = "filesystem"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SECRET_KEY = os.environ.get('GOODREADS_KEY')
+    GOODREADS_KEY = os.environ.get('GOODREADS_KEY')
 
 
 class DevelopmentConfig(BaseConfig):
