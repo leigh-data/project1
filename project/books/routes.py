@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, session, abort, request
+from flask import Blueprint, render_template, session, abort, request, redirect, url_for, flash
 from project import db
 from utils.decorators import login_required
 from project.ratings.forms import DeleteRatingForm
@@ -17,6 +17,9 @@ def index():
 @login_required
 def search():
     query = request.args.get('q')
+    if not query:
+        flash("You must enter a search string.")
+        return redirect(url_for('books.index'))
 
     page = request.args.get('page')
     page = int(page)

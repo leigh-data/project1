@@ -3,33 +3,28 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <div class="navbar-nav">
+    <ul class="navbar-nav mr-auto">
       {% if session['username'] %}
-        <div class="nav-item">
-            <a class="nav-link">
-              <i class="fas fa-user ar-1"></i>{{ session['username']}}
-            </a>
-        </div>
-        <div class="nav-item">
-          <form action="{{ url_for('auth.logout')}}" method="post" class="form-inline">
-              <button class="btn btn-dark">Log Out</button>
-          </form>
-        </div>
-      {% else %}
-        <div class="nav-item"><a class="nav-link text-white bg-dark mr-2" href="{{ url_for('auth.login')}}">Log In</a></div>
-        <div class="nav-item"><a class="nav-link text-white bg-dark" href="{{ url_for('auth.register')}}">Register</a></div>
-      {% endif %}
-    </div>
-    <div class="nav-nav ml-auto">
-      <div class="nav-item">
-        <form class="form-inline" action="{{ url_for("books.search")}}" method="GET">
-          <input class="form-control mb-1" name="q" type="search" placeholder="Search" aria-label="Search" id="search">
-          <input type="hidden" name="page" value="1">
-          <button class="btn btn-secondary mb-1" type="submit">Search</button>
+      <li class="nav-item">
+        <a class="nav-link">
+          <i class="fas fa-user ar-1"></i>{{ session['username']}}
+        </a>
+      </li>
+      <li class="nav-item">
+        <form action="{{ url_for('auth.logout')}}" method="post" class="form-inline">
+            <button class="btn btn-dark">Log Out</button>
         </form>
-      </div>
-    </div>
+      </li>
+      {% else %}
+      <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.login')}}">Log In</a></li>
+      <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.register')}}">Register</a></li>
+      {% endif %}
+    </ul>
+    <form class="form-inline my-2 my-lg-0" action="{{ url_for("books.search")}}" method="GET">
+      <input class="form-control mr-sm-2" type="search" name="q" placeholder="Search" aria-label="Search">
+      <input type="hidden" name="page" value="1">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
   </div>
 </nav>
