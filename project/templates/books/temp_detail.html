@@ -18,7 +18,7 @@
                     </ul>
                     {% if  has_rating %}
                     <div class="card-body rating-buttons">
-                        <a href="{{ url_for('ratings.update_rating', isbn=book.isbn)}}" class="card-link btn btn-primary mr-2">Update Review</a>
+                        <a href="{{ url_for('ratings.update_rating', isbn=book.isbn)}}" class="card-link btn btn-primary">Update Review</a>
                         <form action="{{ url_for('ratings.delete_rating', isbn=book.isbn)}}" method="post" class="float-right">
                             {{ form.hidden_tag() }}
                             <button class="btn btn-danger">Delete Review</button>

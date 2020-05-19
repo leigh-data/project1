@@ -16,6 +16,19 @@
                         <li class="list-group-item">Year: {{ book.year }}</li>
                         <li class="list-group-item">ISBN: {{ book.isbn }}</li>
                     </ul>
+                    {% if  has_rating %}
+                    <div class="card-body">
+                        <a href="{{ url_for('ratings.update_rating', isbn=book.isbn)}}" class="card-link btn btn-primary mr-2 float-left">Update Review</a>
+                        <form action="{{ url_for('ratings.delete_rating', isbn=book.isbn)}}" method="post" class="float-right">
+                            {{ form.hidden_tag() }}
+                            <button class="btn btn-danger">Delete Review</button>
+                        </form>
+                    </div>
+                    {% else %}
+                    <div class="card-body rating-buttons text-center">
+                        <a href="{{ url_for('ratings.create_rating', isbn=book.isbn)}}" class="btn btn-primary">Write Review</a>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
             <div class="col-md-5">
@@ -33,7 +46,21 @@
         <div class="row">
             <div class="col">
                 <div class="card">
-                    Ratings
+                    <div class="card-header">
+                        Ratings
+                </div>
+                {% if ratings %}
+                    <ul class="list-group list-group-flush">
+                    {% for rating in ratings %}
+                        <li class="list-group-item">{{ rating.username }} <span class="badge badge-primary mr-2 ml-2">{{ rating.rating }}</span> {{ rating.comment }}</li>
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                <div class="card-body">
+                    <p class="card-text">There are no ratings.</p>
+                </div>
+                {% endif %}
+                <div class="card-footer text-muted"></div>
                 </div>
             </div>
         </div>

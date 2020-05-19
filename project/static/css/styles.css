@@ -3303,7 +3303,7 @@ input[type="button"].btn-block {
     .navbar-dark .navbar-text a:hover, .navbar-dark .navbar-text a:focus {
       color: #fff; }
 
-.card, .book-card, .goodreads-card, .rating-card {
+.card {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -3313,17 +3313,17 @@ input[type="button"].btn-block {
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem; }
-  .card > hr, .book-card > hr, .goodreads-card > hr, .rating-card > hr {
+  .card > hr {
     margin-right: 0;
     margin-left: 0; }
-  .card > .list-group, .book-card > .list-group, .goodreads-card > .list-group, .rating-card > .list-group, .book-card > ul, .goodreads-card > ul, .rating-card > ul {
+  .card > .list-group {
     border-top: inherit;
     border-bottom: inherit; }
-    .card > .list-group:first-child, .book-card > .list-group:first-child, .goodreads-card > .list-group:first-child, .rating-card > .list-group:first-child, .book-card > ul:first-child, .goodreads-card > ul:first-child, .rating-card > ul:first-child {
+    .card > .list-group:first-child {
       border-top-width: 0;
       border-top-left-radius: calc(0.25rem - 1px);
       border-top-right-radius: calc(0.25rem - 1px); }
-    .card > .list-group:last-child, .book-card > .list-group:last-child, .goodreads-card > .list-group:last-child, .rating-card > .list-group:last-child, .book-card > ul:last-child, .goodreads-card > ul:last-child, .rating-card > ul:last-child {
+    .card > .list-group:last-child {
       border-bottom-width: 0;
       border-bottom-right-radius: calc(0.25rem - 1px);
       border-bottom-left-radius: calc(0.25rem - 1px); }
@@ -3356,7 +3356,7 @@ input[type="button"].btn-block {
   border-bottom: 1px solid rgba(0, 0, 0, 0.125); }
   .card-header:first-child {
     border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0; }
-  .card-header + .list-group .list-group-item:first-child, .book-card > .card-header + ul .list-group-item:first-child, .goodreads-card > .card-header + ul .list-group-item:first-child, .rating-card > .card-header + ul .list-group-item:first-child, .card-header + .list-group .book-card > ul li:first-child, .book-card > ul .card-header + .list-group li:first-child, .book-card > .card-header + ul .book-card > ul li:first-child, .book-card > ul .book-card > .card-header + ul li:first-child, .goodreads-card > .card-header + ul .book-card > ul li:first-child, .book-card > ul .goodreads-card > .card-header + ul li:first-child, .rating-card > .card-header + ul .book-card > ul li:first-child, .book-card > ul .rating-card > .card-header + ul li:first-child, .card-header + .list-group .goodreads-card > ul li:first-child, .goodreads-card > ul .card-header + .list-group li:first-child, .book-card > .card-header + ul .goodreads-card > ul li:first-child, .goodreads-card > ul .book-card > .card-header + ul li:first-child, .goodreads-card > .card-header + ul .goodreads-card > ul li:first-child, .goodreads-card > ul .goodreads-card > .card-header + ul li:first-child, .rating-card > .card-header + ul .goodreads-card > ul li:first-child, .goodreads-card > ul .rating-card > .card-header + ul li:first-child, .card-header + .list-group .rating-card > ul li:first-child, .rating-card > ul .card-header + .list-group li:first-child, .book-card > .card-header + ul .rating-card > ul li:first-child, .rating-card > ul .book-card > .card-header + ul li:first-child, .goodreads-card > .card-header + ul .rating-card > ul li:first-child, .rating-card > ul .goodreads-card > .card-header + ul li:first-child, .rating-card > .card-header + ul .rating-card > ul li:first-child, .rating-card > ul .rating-card > .card-header + ul li:first-child {
+  .card-header + .list-group .list-group-item:first-child {
     border-top: 0; }
 
 .card-footer {
@@ -3400,7 +3400,7 @@ input[type="button"].btn-block {
   border-bottom-right-radius: calc(0.25rem - 1px);
   border-bottom-left-radius: calc(0.25rem - 1px); }
 
-.card-deck .card, .card-deck .book-card, .card-deck .goodreads-card, .card-deck .rating-card {
+.card-deck .card {
   margin-bottom: 15px; }
 
 @media (min-width: 576px) {
@@ -3409,57 +3409,45 @@ input[type="button"].btn-block {
     flex-flow: row wrap;
     margin-right: -15px;
     margin-left: -15px; }
-    .card-deck .card, .card-deck .book-card, .card-deck .goodreads-card, .card-deck .rating-card {
+    .card-deck .card {
       flex: 1 0 0%;
       margin-right: 15px;
       margin-bottom: 0;
       margin-left: 15px; } }
 
-.card-group > .card, .card-group > .book-card, .card-group > .goodreads-card, .card-group > .rating-card {
+.card-group > .card {
   margin-bottom: 15px; }
 
 @media (min-width: 576px) {
   .card-group {
     display: flex;
     flex-flow: row wrap; }
-    .card-group > .card, .card-group > .book-card, .card-group > .goodreads-card, .card-group > .rating-card {
+    .card-group > .card {
       flex: 1 0 0%;
       margin-bottom: 0; }
-      .card-group > .card + .card, .card-group > .book-card + .card, .card-group > .goodreads-card + .card, .card-group > .rating-card + .card, .card-group > .card + .book-card, .card-group > .book-card + .book-card, .card-group > .goodreads-card + .book-card, .card-group > .rating-card + .book-card, .card-group > .card + .goodreads-card, .card-group > .book-card + .goodreads-card, .card-group > .goodreads-card + .goodreads-card, .card-group > .rating-card + .goodreads-card, .card-group > .card + .rating-card, .card-group > .book-card + .rating-card, .card-group > .goodreads-card + .rating-card, .card-group > .rating-card + .rating-card {
+      .card-group > .card + .card {
         margin-left: 0;
         border-left: 0; }
-      .card-group > .card:not(:last-child), .card-group > .book-card:not(:last-child), .card-group > .goodreads-card:not(:last-child), .card-group > .rating-card:not(:last-child) {
+      .card-group > .card:not(:last-child) {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0; }
-        .card-group > .card:not(:last-child) .card-img-top, .card-group > .book-card:not(:last-child) .card-img-top, .card-group > .goodreads-card:not(:last-child) .card-img-top, .card-group > .rating-card:not(:last-child) .card-img-top,
-        .card-group > .card:not(:last-child) .card-header,
-        .card-group > .book-card:not(:last-child) .card-header,
-        .card-group > .goodreads-card:not(:last-child) .card-header,
-        .card-group > .rating-card:not(:last-child) .card-header {
+        .card-group > .card:not(:last-child) .card-img-top,
+        .card-group > .card:not(:last-child) .card-header {
           border-top-right-radius: 0; }
-        .card-group > .card:not(:last-child) .card-img-bottom, .card-group > .book-card:not(:last-child) .card-img-bottom, .card-group > .goodreads-card:not(:last-child) .card-img-bottom, .card-group > .rating-card:not(:last-child) .card-img-bottom,
-        .card-group > .card:not(:last-child) .card-footer,
-        .card-group > .book-card:not(:last-child) .card-footer,
-        .card-group > .goodreads-card:not(:last-child) .card-footer,
-        .card-group > .rating-card:not(:last-child) .card-footer {
+        .card-group > .card:not(:last-child) .card-img-bottom,
+        .card-group > .card:not(:last-child) .card-footer {
           border-bottom-right-radius: 0; }
-      .card-group > .card:not(:first-child), .card-group > .book-card:not(:first-child), .card-group > .goodreads-card:not(:first-child), .card-group > .rating-card:not(:first-child) {
+      .card-group > .card:not(:first-child) {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0; }
-        .card-group > .card:not(:first-child) .card-img-top, .card-group > .book-card:not(:first-child) .card-img-top, .card-group > .goodreads-card:not(:first-child) .card-img-top, .card-group > .rating-card:not(:first-child) .card-img-top,
-        .card-group > .card:not(:first-child) .card-header,
-        .card-group > .book-card:not(:first-child) .card-header,
-        .card-group > .goodreads-card:not(:first-child) .card-header,
-        .card-group > .rating-card:not(:first-child) .card-header {
+        .card-group > .card:not(:first-child) .card-img-top,
+        .card-group > .card:not(:first-child) .card-header {
           border-top-left-radius: 0; }
-        .card-group > .card:not(:first-child) .card-img-bottom, .card-group > .book-card:not(:first-child) .card-img-bottom, .card-group > .goodreads-card:not(:first-child) .card-img-bottom, .card-group > .rating-card:not(:first-child) .card-img-bottom,
-        .card-group > .card:not(:first-child) .card-footer,
-        .card-group > .book-card:not(:first-child) .card-footer,
-        .card-group > .goodreads-card:not(:first-child) .card-footer,
-        .card-group > .rating-card:not(:first-child) .card-footer {
+        .card-group > .card:not(:first-child) .card-img-bottom,
+        .card-group > .card:not(:first-child) .card-footer {
           border-bottom-left-radius: 0; } }
 
-.card-columns .card, .card-columns .book-card, .card-columns .goodreads-card, .card-columns .rating-card {
+.card-columns .card {
   margin-bottom: 0.75rem; }
 
 @media (min-width: 576px) {
@@ -3468,20 +3456,20 @@ input[type="button"].btn-block {
     column-gap: 1.25rem;
     orphans: 1;
     widows: 1; }
-    .card-columns .card, .card-columns .book-card, .card-columns .goodreads-card, .card-columns .rating-card {
+    .card-columns .card {
       display: inline-block;
       width: 100%; } }
 
-.accordion > .card, .accordion > .book-card, .accordion > .goodreads-card, .accordion > .rating-card {
+.accordion > .card {
   overflow: hidden; }
-  .accordion > .card:not(:last-of-type), .accordion > .book-card:not(:last-of-type), .accordion > .goodreads-card:not(:last-of-type), .accordion > .rating-card:not(:last-of-type) {
+  .accordion > .card:not(:last-of-type) {
     border-bottom: 0;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0; }
-  .accordion > .card:not(:first-of-type), .accordion > .book-card:not(:first-of-type), .accordion > .goodreads-card:not(:first-of-type), .accordion > .rating-card:not(:first-of-type) {
+  .accordion > .card:not(:first-of-type) {
     border-top-left-radius: 0;
     border-top-right-radius: 0; }
-  .accordion > .card > .card-header, .accordion > .book-card > .card-header, .accordion > .goodreads-card > .card-header, .accordion > .rating-card > .card-header {
+  .accordion > .card > .card-header {
     border-radius: 0;
     margin-bottom: -1px; }
 
@@ -3846,7 +3834,7 @@ input[type="button"].btn-block {
 .media-body {
   flex: 1; }
 
-.list-group, .book-card > ul, .goodreads-card > ul, .rating-card > ul {
+.list-group {
   display: flex;
   flex-direction: column;
   padding-left: 0;
@@ -3866,127 +3854,127 @@ input[type="button"].btn-block {
     color: #212529;
     background-color: #e9ecef; }
 
-.list-group-item, .book-card > ul li, .goodreads-card > ul li, .rating-card > ul li {
+.list-group-item {
   position: relative;
   display: block;
   padding: 0.75rem 1.25rem;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, 0.125); }
-  .list-group-item:first-child, .book-card > ul li:first-child, .goodreads-card > ul li:first-child, .rating-card > ul li:first-child {
+  .list-group-item:first-child {
     border-top-left-radius: inherit;
     border-top-right-radius: inherit; }
-  .list-group-item:last-child, .book-card > ul li:last-child, .goodreads-card > ul li:last-child, .rating-card > ul li:last-child {
+  .list-group-item:last-child {
     border-bottom-right-radius: inherit;
     border-bottom-left-radius: inherit; }
-  .list-group-item.disabled, .book-card > ul li.disabled, .goodreads-card > ul li.disabled, .rating-card > ul li.disabled, .list-group-item:disabled, .book-card > ul li:disabled, .goodreads-card > ul li:disabled, .rating-card > ul li:disabled {
+  .list-group-item.disabled, .list-group-item:disabled {
     color: #6c757d;
     pointer-events: none;
     background-color: #fff; }
-  .list-group-item.active, .book-card > ul li.active, .goodreads-card > ul li.active, .rating-card > ul li.active {
+  .list-group-item.active {
     z-index: 2;
     color: #fff;
     background-color: #007bff;
     border-color: #007bff; }
-  .list-group-item + .list-group-item, .book-card > ul li + .list-group-item, .goodreads-card > ul li + .list-group-item, .rating-card > ul li + .list-group-item, .book-card > ul .list-group-item + li, .book-card > ul li + li, .goodreads-card > ul .list-group-item + li, .goodreads-card > ul li + li, .rating-card > ul .list-group-item + li, .rating-card > ul li + li {
+  .list-group-item + .list-group-item {
     border-top-width: 0; }
-    .list-group-item + .list-group-item.active, .book-card > ul li + .list-group-item.active, .goodreads-card > ul li + .list-group-item.active, .rating-card > ul li + .list-group-item.active, .book-card > ul .list-group-item + li.active, .book-card > ul li + li.active, .goodreads-card > ul .list-group-item + li.active, .goodreads-card > ul li + li.active, .rating-card > ul .list-group-item + li.active, .rating-card > ul li + li.active {
+    .list-group-item + .list-group-item.active {
       margin-top: -1px;
       border-top-width: 1px; }
 
 .list-group-horizontal {
   flex-direction: row; }
-  .list-group-horizontal > .list-group-item:first-child, .book-card > ul .list-group-horizontal > li:first-child, .goodreads-card > ul .list-group-horizontal > li:first-child, .rating-card > ul .list-group-horizontal > li:first-child {
+  .list-group-horizontal > .list-group-item:first-child {
     border-bottom-left-radius: 0.25rem;
     border-top-right-radius: 0; }
-  .list-group-horizontal > .list-group-item:last-child, .book-card > ul .list-group-horizontal > li:last-child, .goodreads-card > ul .list-group-horizontal > li:last-child, .rating-card > ul .list-group-horizontal > li:last-child {
+  .list-group-horizontal > .list-group-item:last-child {
     border-top-right-radius: 0.25rem;
     border-bottom-left-radius: 0; }
-  .list-group-horizontal > .list-group-item.active, .book-card > ul .list-group-horizontal > li.active, .goodreads-card > ul .list-group-horizontal > li.active, .rating-card > ul .list-group-horizontal > li.active {
+  .list-group-horizontal > .list-group-item.active {
     margin-top: 0; }
-  .list-group-horizontal > .list-group-item + .list-group-item, .book-card > ul .list-group-horizontal > li + .list-group-item, .goodreads-card > ul .list-group-horizontal > li + .list-group-item, .rating-card > ul .list-group-horizontal > li + .list-group-item, .book-card > ul .list-group-horizontal > .list-group-item + li, .book-card > ul .list-group-horizontal > li + li, .goodreads-card > ul .list-group-horizontal > .list-group-item + li, .book-card > ul .goodreads-card > ul .list-group-horizontal > li + li, .goodreads-card > ul .book-card > ul .list-group-horizontal > li + li, .goodreads-card > ul .list-group-horizontal > li + li, .rating-card > ul .list-group-horizontal > .list-group-item + li, .book-card > ul .rating-card > ul .list-group-horizontal > li + li, .rating-card > ul .book-card > ul .list-group-horizontal > li + li, .goodreads-card > ul .rating-card > ul .list-group-horizontal > li + li, .rating-card > ul .goodreads-card > ul .list-group-horizontal > li + li, .rating-card > ul .list-group-horizontal > li + li {
+  .list-group-horizontal > .list-group-item + .list-group-item {
     border-top-width: 1px;
     border-left-width: 0; }
-    .list-group-horizontal > .list-group-item + .list-group-item.active, .book-card > ul .list-group-horizontal > li + .list-group-item.active, .goodreads-card > ul .list-group-horizontal > li + .list-group-item.active, .rating-card > ul .list-group-horizontal > li + .list-group-item.active, .book-card > ul .list-group-horizontal > .list-group-item + li.active, .book-card > ul .list-group-horizontal > li + li.active, .goodreads-card > ul .list-group-horizontal > .list-group-item + li.active, .book-card > ul .goodreads-card > ul .list-group-horizontal > li + li.active, .goodreads-card > ul .book-card > ul .list-group-horizontal > li + li.active, .goodreads-card > ul .list-group-horizontal > li + li.active, .rating-card > ul .list-group-horizontal > .list-group-item + li.active, .book-card > ul .rating-card > ul .list-group-horizontal > li + li.active, .rating-card > ul .book-card > ul .list-group-horizontal > li + li.active, .goodreads-card > ul .rating-card > ul .list-group-horizontal > li + li.active, .rating-card > ul .goodreads-card > ul .list-group-horizontal > li + li.active, .rating-card > ul .list-group-horizontal > li + li.active {
+    .list-group-horizontal > .list-group-item + .list-group-item.active {
       margin-left: -1px;
       border-left-width: 1px; }
 
 @media (min-width: 576px) {
   .list-group-horizontal-sm {
     flex-direction: row; }
-    .list-group-horizontal-sm > .list-group-item:first-child, .book-card > ul .list-group-horizontal-sm > li:first-child, .goodreads-card > ul .list-group-horizontal-sm > li:first-child, .rating-card > ul .list-group-horizontal-sm > li:first-child {
+    .list-group-horizontal-sm > .list-group-item:first-child {
       border-bottom-left-radius: 0.25rem;
       border-top-right-radius: 0; }
-    .list-group-horizontal-sm > .list-group-item:last-child, .book-card > ul .list-group-horizontal-sm > li:last-child, .goodreads-card > ul .list-group-horizontal-sm > li:last-child, .rating-card > ul .list-group-horizontal-sm > li:last-child {
+    .list-group-horizontal-sm > .list-group-item:last-child {
       border-top-right-radius: 0.25rem;
       border-bottom-left-radius: 0; }
-    .list-group-horizontal-sm > .list-group-item.active, .book-card > ul .list-group-horizontal-sm > li.active, .goodreads-card > ul .list-group-horizontal-sm > li.active, .rating-card > ul .list-group-horizontal-sm > li.active {
+    .list-group-horizontal-sm > .list-group-item.active {
       margin-top: 0; }
-    .list-group-horizontal-sm > .list-group-item + .list-group-item, .book-card > ul .list-group-horizontal-sm > li + .list-group-item, .goodreads-card > ul .list-group-horizontal-sm > li + .list-group-item, .rating-card > ul .list-group-horizontal-sm > li + .list-group-item, .book-card > ul .list-group-horizontal-sm > .list-group-item + li, .book-card > ul .list-group-horizontal-sm > li + li, .goodreads-card > ul .list-group-horizontal-sm > .list-group-item + li, .book-card > ul .goodreads-card > ul .list-group-horizontal-sm > li + li, .goodreads-card > ul .book-card > ul .list-group-horizontal-sm > li + li, .goodreads-card > ul .list-group-horizontal-sm > li + li, .rating-card > ul .list-group-horizontal-sm > .list-group-item + li, .book-card > ul .rating-card > ul .list-group-horizontal-sm > li + li, .rating-card > ul .book-card > ul .list-group-horizontal-sm > li + li, .goodreads-card > ul .rating-card > ul .list-group-horizontal-sm > li + li, .rating-card > ul .goodreads-card > ul .list-group-horizontal-sm > li + li, .rating-card > ul .list-group-horizontal-sm > li + li {
+    .list-group-horizontal-sm > .list-group-item + .list-group-item {
       border-top-width: 1px;
       border-left-width: 0; }
-      .list-group-horizontal-sm > .list-group-item + .list-group-item.active, .book-card > ul .list-group-horizontal-sm > li + .list-group-item.active, .goodreads-card > ul .list-group-horizontal-sm > li + .list-group-item.active, .rating-card > ul .list-group-horizontal-sm > li + .list-group-item.active, .book-card > ul .list-group-horizontal-sm > .list-group-item + li.active, .book-card > ul .list-group-horizontal-sm > li + li.active, .goodreads-card > ul .list-group-horizontal-sm > .list-group-item + li.active, .book-card > ul .goodreads-card > ul .list-group-horizontal-sm > li + li.active, .goodreads-card > ul .book-card > ul .list-group-horizontal-sm > li + li.active, .goodreads-card > ul .list-group-horizontal-sm > li + li.active, .rating-card > ul .list-group-horizontal-sm > .list-group-item + li.active, .book-card > ul .rating-card > ul .list-group-horizontal-sm > li + li.active, .rating-card > ul .book-card > ul .list-group-horizontal-sm > li + li.active, .goodreads-card > ul .rating-card > ul .list-group-horizontal-sm > li + li.active, .rating-card > ul .goodreads-card > ul .list-group-horizontal-sm > li + li.active, .rating-card > ul .list-group-horizontal-sm > li + li.active {
+      .list-group-horizontal-sm > .list-group-item + .list-group-item.active {
         margin-left: -1px;
         border-left-width: 1px; } }
 
 @media (min-width: 768px) {
   .list-group-horizontal-md {
     flex-direction: row; }
-    .list-group-horizontal-md > .list-group-item:first-child, .book-card > ul .list-group-horizontal-md > li:first-child, .goodreads-card > ul .list-group-horizontal-md > li:first-child, .rating-card > ul .list-group-horizontal-md > li:first-child {
+    .list-group-horizontal-md > .list-group-item:first-child {
       border-bottom-left-radius: 0.25rem;
       border-top-right-radius: 0; }
-    .list-group-horizontal-md > .list-group-item:last-child, .book-card > ul .list-group-horizontal-md > li:last-child, .goodreads-card > ul .list-group-horizontal-md > li:last-child, .rating-card > ul .list-group-horizontal-md > li:last-child {
+    .list-group-horizontal-md > .list-group-item:last-child {
       border-top-right-radius: 0.25rem;
       border-bottom-left-radius: 0; }
-    .list-group-horizontal-md > .list-group-item.active, .book-card > ul .list-group-horizontal-md > li.active, .goodreads-card > ul .list-group-horizontal-md > li.active, .rating-card > ul .list-group-horizontal-md > li.active {
+    .list-group-horizontal-md > .list-group-item.active {
       margin-top: 0; }
-    .list-group-horizontal-md > .list-group-item + .list-group-item, .book-card > ul .list-group-horizontal-md > li + .list-group-item, .goodreads-card > ul .list-group-horizontal-md > li + .list-group-item, .rating-card > ul .list-group-horizontal-md > li + .list-group-item, .book-card > ul .list-group-horizontal-md > .list-group-item + li, .book-card > ul .list-group-horizontal-md > li + li, .goodreads-card > ul .list-group-horizontal-md > .list-group-item + li, .book-card > ul .goodreads-card > ul .list-group-horizontal-md > li + li, .goodreads-card > ul .book-card > ul .list-group-horizontal-md > li + li, .goodreads-card > ul .list-group-horizontal-md > li + li, .rating-card > ul .list-group-horizontal-md > .list-group-item + li, .book-card > ul .rating-card > ul .list-group-horizontal-md > li + li, .rating-card > ul .book-card > ul .list-group-horizontal-md > li + li, .goodreads-card > ul .rating-card > ul .list-group-horizontal-md > li + li, .rating-card > ul .goodreads-card > ul .list-group-horizontal-md > li + li, .rating-card > ul .list-group-horizontal-md > li + li {
+    .list-group-horizontal-md > .list-group-item + .list-group-item {
       border-top-width: 1px;
       border-left-width: 0; }
-      .list-group-horizontal-md > .list-group-item + .list-group-item.active, .book-card > ul .list-group-horizontal-md > li + .list-group-item.active, .goodreads-card > ul .list-group-horizontal-md > li + .list-group-item.active, .rating-card > ul .list-group-horizontal-md > li + .list-group-item.active, .book-card > ul .list-group-horizontal-md > .list-group-item + li.active, .book-card > ul .list-group-horizontal-md > li + li.active, .goodreads-card > ul .list-group-horizontal-md > .list-group-item + li.active, .book-card > ul .goodreads-card > ul .list-group-horizontal-md > li + li.active, .goodreads-card > ul .book-card > ul .list-group-horizontal-md > li + li.active, .goodreads-card > ul .list-group-horizontal-md > li + li.active, .rating-card > ul .list-group-horizontal-md > .list-group-item + li.active, .book-card > ul .rating-card > ul .list-group-horizontal-md > li + li.active, .rating-card > ul .book-card > ul .list-group-horizontal-md > li + li.active, .goodreads-card > ul .rating-card > ul .list-group-horizontal-md > li + li.active, .rating-card > ul .goodreads-card > ul .list-group-horizontal-md > li + li.active, .rating-card > ul .list-group-horizontal-md > li + li.active {
+      .list-group-horizontal-md > .list-group-item + .list-group-item.active {
         margin-left: -1px;
         border-left-width: 1px; } }
 
 @media (min-width: 992px) {
   .list-group-horizontal-lg {
     flex-direction: row; }
-    .list-group-horizontal-lg > .list-group-item:first-child, .book-card > ul .list-group-horizontal-lg > li:first-child, .goodreads-card > ul .list-group-horizontal-lg > li:first-child, .rating-card > ul .list-group-horizontal-lg > li:first-child {
+    .list-group-horizontal-lg > .list-group-item:first-child {
       border-bottom-left-radius: 0.25rem;
       border-top-right-radius: 0; }
-    .list-group-horizontal-lg > .list-group-item:last-child, .book-card > ul .list-group-horizontal-lg > li:last-child, .goodreads-card > ul .list-group-horizontal-lg > li:last-child, .rating-card > ul .list-group-horizontal-lg > li:last-child {
+    .list-group-horizontal-lg > .list-group-item:last-child {
       border-top-right-radius: 0.25rem;
       border-bottom-left-radius: 0; }
-    .list-group-horizontal-lg > .list-group-item.active, .book-card > ul .list-group-horizontal-lg > li.active, .goodreads-card > ul .list-group-horizontal-lg > li.active, .rating-card > ul .list-group-horizontal-lg > li.active {
+    .list-group-horizontal-lg > .list-group-item.active {
       margin-top: 0; }
-    .list-group-horizontal-lg > .list-group-item + .list-group-item, .book-card > ul .list-group-horizontal-lg > li + .list-group-item, .goodreads-card > ul .list-group-horizontal-lg > li + .list-group-item, .rating-card > ul .list-group-horizontal-lg > li + .list-group-item, .book-card > ul .list-group-horizontal-lg > .list-group-item + li, .book-card > ul .list-group-horizontal-lg > li + li, .goodreads-card > ul .list-group-horizontal-lg > .list-group-item + li, .book-card > ul .goodreads-card > ul .list-group-horizontal-lg > li + li, .goodreads-card > ul .book-card > ul .list-group-horizontal-lg > li + li, .goodreads-card > ul .list-group-horizontal-lg > li + li, .rating-card > ul .list-group-horizontal-lg > .list-group-item + li, .book-card > ul .rating-card > ul .list-group-horizontal-lg > li + li, .rating-card > ul .book-card > ul .list-group-horizontal-lg > li + li, .goodreads-card > ul .rating-card > ul .list-group-horizontal-lg > li + li, .rating-card > ul .goodreads-card > ul .list-group-horizontal-lg > li + li, .rating-card > ul .list-group-horizontal-lg > li + li {
+    .list-group-horizontal-lg > .list-group-item + .list-group-item {
       border-top-width: 1px;
       border-left-width: 0; }
-      .list-group-horizontal-lg > .list-group-item + .list-group-item.active, .book-card > ul .list-group-horizontal-lg > li + .list-group-item.active, .goodreads-card > ul .list-group-horizontal-lg > li + .list-group-item.active, .rating-card > ul .list-group-horizontal-lg > li + .list-group-item.active, .book-card > ul .list-group-horizontal-lg > .list-group-item + li.active, .book-card > ul .list-group-horizontal-lg > li + li.active, .goodreads-card > ul .list-group-horizontal-lg > .list-group-item + li.active, .book-card > ul .goodreads-card > ul .list-group-horizontal-lg > li + li.active, .goodreads-card > ul .book-card > ul .list-group-horizontal-lg > li + li.active, .goodreads-card > ul .list-group-horizontal-lg > li + li.active, .rating-card > ul .list-group-horizontal-lg > .list-group-item + li.active, .book-card > ul .rating-card > ul .list-group-horizontal-lg > li + li.active, .rating-card > ul .book-card > ul .list-group-horizontal-lg > li + li.active, .goodreads-card > ul .rating-card > ul .list-group-horizontal-lg > li + li.active, .rating-card > ul .goodreads-card > ul .list-group-horizontal-lg > li + li.active, .rating-card > ul .list-group-horizontal-lg > li + li.active {
+      .list-group-horizontal-lg > .list-group-item + .list-group-item.active {
         margin-left: -1px;
         border-left-width: 1px; } }
 
 @media (min-width: 1200px) {
   .list-group-horizontal-xl {
     flex-direction: row; }
-    .list-group-horizontal-xl > .list-group-item:first-child, .book-card > ul .list-group-horizontal-xl > li:first-child, .goodreads-card > ul .list-group-horizontal-xl > li:first-child, .rating-card > ul .list-group-horizontal-xl > li:first-child {
+    .list-group-horizontal-xl > .list-group-item:first-child {
       border-bottom-left-radius: 0.25rem;
       border-top-right-radius: 0; }
-    .list-group-horizontal-xl > .list-group-item:last-child, .book-card > ul .list-group-horizontal-xl > li:last-child, .goodreads-card > ul .list-group-horizontal-xl > li:last-child, .rating-card > ul .list-group-horizontal-xl > li:last-child {
+    .list-group-horizontal-xl > .list-group-item:last-child {
       border-top-right-radius: 0.25rem;
       border-bottom-left-radius: 0; }
-    .list-group-horizontal-xl > .list-group-item.active, .book-card > ul .list-group-horizontal-xl > li.active, .goodreads-card > ul .list-group-horizontal-xl > li.active, .rating-card > ul .list-group-horizontal-xl > li.active {
+    .list-group-horizontal-xl > .list-group-item.active {
       margin-top: 0; }
-    .list-group-horizontal-xl > .list-group-item + .list-group-item, .book-card > ul .list-group-horizontal-xl > li + .list-group-item, .goodreads-card > ul .list-group-horizontal-xl > li + .list-group-item, .rating-card > ul .list-group-horizontal-xl > li + .list-group-item, .book-card > ul .list-group-horizontal-xl > .list-group-item + li, .book-card > ul .list-group-horizontal-xl > li + li, .goodreads-card > ul .list-group-horizontal-xl > .list-group-item + li, .book-card > ul .goodreads-card > ul .list-group-horizontal-xl > li + li, .goodreads-card > ul .book-card > ul .list-group-horizontal-xl > li + li, .goodreads-card > ul .list-group-horizontal-xl > li + li, .rating-card > ul .list-group-horizontal-xl > .list-group-item + li, .book-card > ul .rating-card > ul .list-group-horizontal-xl > li + li, .rating-card > ul .book-card > ul .list-group-horizontal-xl > li + li, .goodreads-card > ul .rating-card > ul .list-group-horizontal-xl > li + li, .rating-card > ul .goodreads-card > ul .list-group-horizontal-xl > li + li, .rating-card > ul .list-group-horizontal-xl > li + li {
+    .list-group-horizontal-xl > .list-group-item + .list-group-item {
       border-top-width: 1px;
       border-left-width: 0; }
-      .list-group-horizontal-xl > .list-group-item + .list-group-item.active, .book-card > ul .list-group-horizontal-xl > li + .list-group-item.active, .goodreads-card > ul .list-group-horizontal-xl > li + .list-group-item.active, .rating-card > ul .list-group-horizontal-xl > li + .list-group-item.active, .book-card > ul .list-group-horizontal-xl > .list-group-item + li.active, .book-card > ul .list-group-horizontal-xl > li + li.active, .goodreads-card > ul .list-group-horizontal-xl > .list-group-item + li.active, .book-card > ul .goodreads-card > ul .list-group-horizontal-xl > li + li.active, .goodreads-card > ul .book-card > ul .list-group-horizontal-xl > li + li.active, .goodreads-card > ul .list-group-horizontal-xl > li + li.active, .rating-card > ul .list-group-horizontal-xl > .list-group-item + li.active, .book-card > ul .rating-card > ul .list-group-horizontal-xl > li + li.active, .rating-card > ul .book-card > ul .list-group-horizontal-xl > li + li.active, .goodreads-card > ul .rating-card > ul .list-group-horizontal-xl > li + li.active, .rating-card > ul .goodreads-card > ul .list-group-horizontal-xl > li + li.active, .rating-card > ul .list-group-horizontal-xl > li + li.active {
+      .list-group-horizontal-xl > .list-group-item + .list-group-item.active {
         margin-left: -1px;
         border-left-width: 1px; } }
 
-.list-group-flush, .book-card > ul, .goodreads-card > ul, .rating-card > ul {
+.list-group-flush {
   border-radius: 0; }
-  .list-group-flush > .list-group-item, .book-card > ul > .list-group-item, .goodreads-card > ul > .list-group-item, .rating-card > ul > .list-group-item, .book-card > ul .list-group-flush > li, .book-card > ul > li, .goodreads-card > ul .list-group-flush > li, .goodreads-card > ul > li, .rating-card > ul .list-group-flush > li, .rating-card > ul > li {
+  .list-group-flush > .list-group-item {
     border-width: 0 0 1px; }
-    .list-group-flush > .list-group-item:last-child, .book-card > ul > .list-group-item:last-child, .goodreads-card > ul > .list-group-item:last-child, .rating-card > ul > .list-group-item:last-child, .book-card > ul .list-group-flush > li:last-child, .book-card > ul > li:last-child, .goodreads-card > ul .list-group-flush > li:last-child, .goodreads-card > ul > li:last-child, .rating-card > ul .list-group-flush > li:last-child, .rating-card > ul > li:last-child {
+    .list-group-flush > .list-group-item:last-child {
       border-bottom-width: 0; }
 
 .list-group-item-primary {
@@ -11726,17 +11714,11 @@ body {
 .messages {
   min-height: 58px; }
 
-.book-card, .goodreads-card, .rating-card {
-  width: 100%; }
-  .book-card .card-header, .goodreads-card .card-header, .rating-card .card-header {
-    font-family: "Julius Sans One", sans-serif;
-    text-align: center; }
+/* CARD STYLES */
+.card {
+  height: 100%; }
 
-.book-card {
-  width: 30rem; }
-  .book-card .rating-buttons form {
-    display: inline-block; }
-
+/* RATING FORM STYLES */
 .rating-comment {
   min-height: 300px;
   resize: none; }
