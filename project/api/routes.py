@@ -20,11 +20,23 @@ def not_found(error=None):
 @api_blueprint.route("/<isbn>", methods=['GET'])
 def detail(isbn):
     book = db.session.execute(
-        "SELECT isbn, title, author, year FROM books WHERE isbn=:isbn", {'isbn': isbn}).fetchone()
+        """SELECT books.isbn, books.title, books.author, books.year, 
+            COUNT(ratings.rating) AS review_count, AVG(ratings.rating) AS average_score
+            FROM books INNER JOIN ratings
+            ON books.id=ratings.book_id
+            WHERE books.isbn=:isbn
+            GROUP BY books.id""", {'isbn': isbn}).fetchone()
 
     if book:
-
-        return jsonify(dict(book))
+        data = {
+            'isbn': book.isbn,
+            'title': book.title,
+            'author': book.author,
+            'year': book.year,
+            'review_count': book.review_count,
+            'average_score': float(book.average_score)
+        }
+        return jsonify(data)
 
     else:
         abort(404)
