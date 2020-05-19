@@ -6,11 +6,6 @@ from project import create_app, db
 app = create_app()
 cli = FlaskGroup(create_app=create_app)
 
-"""
-@cli.command('recreate_db')
-def recreate_db():
-    # add all books
-"""
 
 if __name__ == "__main__":
     cli()
