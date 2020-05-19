@@ -11718,6 +11718,9 @@ body {
 .card {
   height: 100%; }
 
+.card-header {
+  font-family: "Julius Sans One", sans-serif; }
+
 /* RATING FORM STYLES */
 .rating-comment {
   min-height: 300px;
