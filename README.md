@@ -41,6 +41,10 @@ The SQL script that builds the tables, indices, and triggers needed to store, al
 
 A csv file containing all of the books in the **Classic Book Report** universe
 
+## test_books.csv
+
+A csv file containing a sampling of books in **books.csv**. Used for development.
+
 ## .gitignore
 
 List of files never to be committed to the repository.
@@ -120,8 +124,22 @@ Handles requests for a book detail in JSON format.
 
 ---
 
+## Environment Variables
+
+There are several environment variables needed to make this application work.
+
+**FLASK_ENV** - The environment used to run the application. In production, the environment is **production**; in development, the environment is **development**
+**APP_SETTINGS** - The configuration class. In production, the variable is **project.config.ProductionConfig**; in development, the variable is **project.config.DevelopmentConfig**
+**DATABASE_URL** - The URL where the database can be accessed. On **Heroku**, the URL is provided by the platform when you provision a database.
+**SECRET_KEY** - A key used by the **Flask** framework.
+**GOODREADS_KEY** - The API key used to access the **Goodreads** API.
+
+In development, these variables are stored in a file called **.env**, which is never commited to the repository because it contains sensitive data. In production, the settings are set individually in the settings page belonging to the app.
+
+---
+
 ## Credits
 
 Hero Image Photo by 🇸🇮[Janko Ferlič](https://unsplash.com/@itfeelslikefilm?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on Unsplash
 
-Patterson, Jordan. "Full Text Searching with Postgres" [forestry.io](https://forestry.io/blog/full-text-searching) August 1, 2019. May 16, 2019.
+Patterson, Jordan. "Full Text Searching with Postgres" [forestry.io](https://forestry.io/blog/full-text-searching-with-postgres/) August 1, 2019. May 16, 2019.
