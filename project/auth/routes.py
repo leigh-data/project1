@@ -48,5 +48,6 @@ def login():
 @login_required
 def logout():
     session.pop('username')
+    session.pop('user_id')
     flash("You have been logged out.")
     return redirect(url_for('books.index'))
