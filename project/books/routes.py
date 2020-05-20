@@ -55,6 +55,7 @@ def search():
 
 
 @books_blueprint.route("/<isbn>")
+@login_required
 def detail(isbn):
     try:
         goodreads_key = current_app.config['GOODREADS_KEY']
