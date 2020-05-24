@@ -2,6 +2,10 @@
 
 Web Programming with Python and JavaScript
 
+Website: [heroku](https://classic-book-report.herokuapp.com)
+
+Screencast: [Youtube](#)
+
 ---
 
 ## Classic Book Report
