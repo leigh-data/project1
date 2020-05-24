@@ -81,9 +81,9 @@ File that contains variables and imports for the main css stylesheet.
 
 This file contains the blueprints, static files, and templates for **Classic Book Report**
 
-### **\_\_init\_\_**.py
+### \_\_init\_\_.py
 
-This init file is not a blank file as in other \***\*init**.py** files in the repository. It contains some configuration and contains the **create_app\*\* factory function used to serve the application.
+This init file is not a blank file as in other **\_\_init\_\_\.py** files in the repository. It contains some configuration and contains the **create_app** factory function used to serve the application.
 
 ### config.py
 
@@ -133,9 +133,13 @@ Handles requests for a book detail in JSON format.
 There are several environment variables needed to make this application work.
 
 **FLASK_ENV** - The environment used to run the application. In production, the environment is **production**; in development, the environment is **development**
+
 **APP_SETTINGS** - The configuration class. In production, the variable is **project.config.ProductionConfig**; in development, the variable is **project.config.DevelopmentConfig**
+
 **DATABASE_URL** - The URL where the database can be accessed. On **Heroku**, the URL is provided by the platform when you provision a database.
+
 **SECRET_KEY** - A key used by the **Flask** framework.
+
 **GOODREADS_KEY** - The API key used to access the **Goodreads** API.
 
 In development, these variables are stored in a file called **.env**, which is never commited to the repository because it contains sensitive data. In production, the settings are set individually in the settings page belonging to the app.
