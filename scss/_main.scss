@@ -29,6 +29,11 @@ body {
   form {
     display: inline;
   }
+
+  .btn-dark:hover {
+    background-color: #343a40;
+    border: none;
+  }
 }
 
 .fa,

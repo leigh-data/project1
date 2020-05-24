@@ -11707,6 +11707,9 @@ body {
   font-family: "Julius Sans One", sans-serif; }
   .navbar form {
     display: inline; }
+  .navbar .btn-dark:hover {
+    background-color: #343a40;
+    border: none; }
 
 .fa,
 .fas {
