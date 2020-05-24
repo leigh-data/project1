@@ -11708,7 +11708,8 @@ body {
   .navbar form {
     display: inline; }
 
-.fa.fa-book {
+.fa,
+.fas {
   color: cornflowerblue; }
 
 .messages {
