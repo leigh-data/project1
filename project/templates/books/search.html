@@ -10,7 +10,9 @@
                 <li class="list-group-item"><i class="fa fa-book mr-3"></i><a href="{{ url_for('books.detail', isbn=book.isbn) }}">{{ book.title }}: {{ book.author }}</a> </li>
             {% endfor %}
         </li>
-        {% if has_previous %}<a href="{{url_for('books.search')}}?q={{query}}&page={{page - 1}}">Previous</a>{% endif %}
-        {% if has_next %}<a href="{{url_for('books.search')}}?q={{query}}&page={{page + 1}}">Next</a>{% endif %}
+        <div class="text-center">
+            {% if has_previous %}<a href="{{url_for('books.search')}}?q={{query}}&page={{page - 1}}" class=""><i class="fas fa-chevron-left fa-6x mr-4"></i></a>{% endif %}
+            {% if has_next %}<a href="{{url_for('books.search')}}?q={{query}}&page={{page + 1}}" class=""><i class="fas fa-chevron-right fa-6x ml-4"></i></a>{% endif %}
+        </div>
     </div>
 {% endblock  %}

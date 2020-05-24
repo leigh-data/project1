@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
-{% block title %}Update Rating{% endblock  %}
+{% block title %}Update Review{% endblock  %}
 
 {% block content %}
     <div class="container mb-3">
-        <h1>Update Rating</h1>
+        <h1>Update Review</h1>
         {% from "macros/_form_macro.html" import render_field %}
-        <form action="{{ url_for('ratings.update_rating', isbn=isbn)}}" method="post" novalidate>
+        <form action="{{ url_for('reviews.update_review', isbn=isbn)}}" method="post" novalidate>
             {{ form.hidden_tag() }}
             <div class="form-group">
                 {{ form.rating.label }}<br>
@@ -18,7 +18,7 @@
                 </div>
                 {% endfor %}
             </div>
-            {{ render_field(form.comment, class="form-control") }}
+            {{ render_field(form.comment, class="form-control review-comment") }}
             <button class="btn btn-primary">Rate it!</button>
         </form>
     </div>

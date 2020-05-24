@@ -16,17 +16,17 @@
                         <li class="list-group-item">Year: {{ book.year }}</li>
                         <li class="list-group-item">ISBN: {{ book.isbn }}</li>
                     </ul>
-                    {% if  has_rating %}
+                    {% if  has_review %}
                     <div class="card-body">
-                        <a href="{{ url_for('ratings.update_rating', isbn=book.isbn)}}" class="card-link btn btn-primary mr-2 float-left">Update Review</a>
-                        <form action="{{ url_for('ratings.delete_rating', isbn=book.isbn)}}" method="post" class="float-right">
+                        <a href="{{ url_for('reviews.update_review', isbn=book.isbn)}}" class="card-link btn btn-primary mr-2 float-left">Update Review</a>
+                        <form action="{{ url_for('reviews.delete_review', isbn=book.isbn)}}" method="post" class="float-right">
                             {{ form.hidden_tag() }}
                             <button class="btn btn-danger">Delete Review</button>
                         </form>
                     </div>
                     {% else %}
                     <div class="card-body rating-buttons text-center">
-                        <a href="{{ url_for('ratings.create_rating', isbn=book.isbn)}}" class="btn btn-primary">Write Review</a>
+                        <a href="{{ url_for('reviews.create_review', isbn=book.isbn)}}" class="btn btn-primary">Write Review</a>
                     </div>
                     {% endif %}
                 </div>
@@ -49,18 +49,18 @@
                     <div class="card-header  text-center">
                         Ratings
                     </div>
-                    {% if ratings %}
+                    {% if reviews %}
                     <ul class="list-group list-group-flush">
-                    {% for rating in ratings %}
-                        <li class="list-group-item">{{ rating.username }}
-                            <span class="badge badge-primary mr-2 ml-2">{{ rating.rating }}</span>
-                            {{ rating.comment }}
+                    {% for review in reviews %}
+                        <li class="list-group-item">{{ review.username }}
+                            <span class="badge badge-primary mr-2 ml-2">{{ review.rating }}</span>
+                            {{ review.comment }}
                         </li>
                     {% endfor %}
                     </ul>
                 {% else %}
                 <div class="card-body">
-                    <p class="card-text text-center">There are no ratings.</p>
+                    <p class="card-text text-center">There are no reviews.</p>
                 </div>
                 {% endif %}
                 <div class="card-footer text-muted">

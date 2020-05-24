@@ -13,7 +13,7 @@ CREATE TABLE users (
     password VARCHAR(255)
 );
 
-CREATE TABLE ratings (
+CREATE TABLE reviews (
     id serial PRIMARY KEY,
     book_id INTEGER REFERENCES books(id) NOT NULL,
     user_id INTEGER REFERENCES users(id) NOT NULL,

@@ -21,9 +21,9 @@ def not_found(error=None):
 def detail(isbn):
     book = db.session.execute(
         """SELECT books.isbn, books.title, books.author, books.year, 
-            COUNT(ratings.rating) AS review_count, AVG(ratings.rating) AS average_score
-            FROM books INNER JOIN ratings
-            ON books.id=ratings.book_id
+            COUNT(reviews.rating) AS review_count, AVG(reviews.rating) AS average_score
+            FROM books INNER JOIN reviews
+            ON books.id=reviews.book_id
             WHERE books.isbn=:isbn
             GROUP BY books.id""", {'isbn': isbn}).fetchone()
 

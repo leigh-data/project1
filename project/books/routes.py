@@ -2,7 +2,7 @@ import requests
 from flask import Blueprint, render_template, session, abort, request, redirect, url_for, flash, current_app
 from project import db
 from utils.decorators import login_required
-from project.ratings.forms import DeleteRatingForm
+from project.reviews.forms import DeleteReviewForm
 
 books_blueprint = Blueprint('books', __name__)
 
@@ -75,22 +75,22 @@ def detail(isbn):
     if book is not None:
         data = {'book_id': book.id}
 
-        ratings = db.session.execute("""
-        SELECT users.username, ratings.rating, ratings.comment
-        FROM ratings
-        JOIN users on users.id=ratings.user_id
-        WHERE ratings.book_id=:book_id
+        reviews = db.session.execute("""
+        SELECT users.username, reviews.rating, reviews.comment
+        FROM reviews
+        JOIN users on users.id=reviews.user_id
+        WHERE reviews.book_id=:book_id
         """, data).fetchall()
 
-        has_rating = db.session.execute(
-            "SELECT COUNT(*) FROM ratings WHERE book_id=:book_id AND user_id=:user_id",
+        has_review = db.session.execute(
+            "SELECT COUNT(*) FROM reviews WHERE book_id=:book_id AND user_id=:user_id",
             {'book_id': book['id'], 'user_id': session['user_id']}).fetchone()[0] > 0
 
-        if has_rating:
-            form = DeleteRatingForm()
+        if has_review:
+            form = DeleteReviewForm()
         else:
             form = None
 
-        return render_template('books/detail.html', book=book, has_rating=has_rating, ratings=ratings, form=form, goodreads_data=goodreads_data)
+        return render_template('books/detail.html', book=book, has_review=has_review, reviews=reviews, form=form, goodreads_data=goodreads_data)
     else:
         abort(404)

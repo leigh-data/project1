@@ -6,7 +6,7 @@
     <div class="container mb-3">
         <h1>Create Rating</h1>
         {% from "macros/_form_macro.html" import render_field %}
-        <form action="{{ url_for('ratings.create_rating', isbn=isbn)}}" method="post" novalidate>
+        <form action="{{ url_for('reviews.create_review', isbn=isbn)}}" method="post" novalidate>
             {{ form.hidden_tag() }}
             <div class="form-group">
                 {{ form.rating.label }}<br>
@@ -18,7 +18,7 @@
                 </div>
                 {% endfor %}
             </div>
-            {{ render_field(form.comment, class="form-control rating-comment") }}
+            {{ render_field(form.comment, class="form-control review-comment") }}
             <button class="btn btn-primary">Rate it!</button>
         </form>
     </div>
